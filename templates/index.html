@@ -1,0 +1,30 @@
+<head>
+    <script src="https://unpkg.com/@preset-sdk/embedded"></script>
+    <style>
+        iframe {
+            height: 100%;
+            width: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <p id="dashboard-container"> </p>
+    <script>
+        // 1. Request guest_token from our backend, which runs at localhost:5000 by default 
+            async function fetchGuestTokenFromBackend() {
+                let response = await fetch('http://127.0.0.1:8000/guest-token');
+                let data = await response.json()
+                return data
+        }
+
+        // 2. Uses Preset Embedded SDK to embed the dashboard as iFrame
+        const myDashboard = presetSdk.embedDashboard({
+          id: "{{ DASHBOARD_ID }}",
+          supersetDomain: "{{ SUPERSET_DOMAIN }}",
+          mountPoint: document.getElementById("dashboard-container"), // any html element that can contain an iframe
+          fetchGuestToken: () => fetchGuestTokenFromBackend(),
+          dashboardUiConfig: { hideTitle: true, hideChartControls: true}, // dashboard UI config: hideTitle, hideTab, hideChartControls (optional)
+        });
+    </script>
+</body>
