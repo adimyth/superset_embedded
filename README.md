@@ -22,17 +22,29 @@ SUPERSET_DOMAIN=http://localhost:8088/
 
 ```bash
 curl -sSL https://install.python-poetry.org | python3 -
+```
+
+2. Add poetry binary to your PATH
+   Replace your username below
+
+```bash
+export PATH="/Users/{YOUR-USERNAME}/.local/bin:$PATH"
+```
+
+3. Check installation
+
+```bash
 poetry --version
 ```
 
-2. Install dependencies
+4. Install dependencies
 
 ```bash
 poetry install
 ```
 
-3. Run the application
+5. Run the application
 
 ```bash
-uvicorn main:app --reload
+poetry run uvicorn main:app --reload
 ```
