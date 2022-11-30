@@ -11,7 +11,7 @@
 <body>
     <p id="dashboard-container"> </p>
     <script>
-        // 1. Request guest_token from our backend, which runs at localhost:5000 by default 
+        // 1. Request guest_token from our backend, which runs at localhost:8000 by default 
             async function fetchGuestTokenFromBackend() {
                 let response = await fetch('http://127.0.0.1:8000/guest-token');
                 let data = await response.json()
